@@ -1,6 +1,7 @@
-import time
-import random
-
+import time 
+import random 
+# THE NEW BRAIN: An empty list to remember trades
+trade_history = []
 while True:
     # 1. Variables
     bitcoin_amount = 2.5
@@ -12,12 +13,16 @@ while True:
     value_now = bitcoin_amount * current_price
     profit = value_now - cost
 
-    # 3. Report
+    # 3. Save to History (The Memory)
+    trade_history.append(profit)
+
+    # 4. Report
     print("--------------------------------")
     print(f"PRICE: ${current_price}")
     print(f"PROFIT: ${profit}")
+    print(f"LOG SIZE: {len(trade_history)} trades recorded")
 
-    # 4. Trading Signal
+    # 5. Trading Signal
     target_profit_rate = 10000
 
     if profit > target_profit_rate:
@@ -27,4 +32,4 @@ while True:
     else:
         print("SIGNAL: 💤 Boring market. Holding.")
 
-    time.sleep(2)
+    time.sleep(1)
